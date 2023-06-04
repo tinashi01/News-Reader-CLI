@@ -5,7 +5,7 @@ This is a CLI application to view the top things to do in Melbourne as filtered 
 
 ## Installation
 
-    $ ruby attraction_app.rb
+    $ ruby lib/rick_and_morty.rb
 
 ## Contributing
 
