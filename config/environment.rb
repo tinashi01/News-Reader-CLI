@@ -7,7 +7,7 @@ require 'net/http'
 
 require_relative '../lib/news_reader.rb'
 require_relative '../lib/news/cli.rb'
-require_relative '../lib/news/category.rb'
+require_relative '../lib/news/title.rb'
 require_relative '../lib/news/article.rb'
 require_relative '../lib/news/scraper.rb'
 require_relative '../lib/news/api.rb'
