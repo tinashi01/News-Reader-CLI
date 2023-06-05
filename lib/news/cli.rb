@@ -7,9 +7,9 @@ class NewsReader::CLI
 
     def category_list
         puts 'Here is a list of articles to select from:'
-        categories = NewsReader::API.new.category_type.uniq
+        articles = NewsReader::API.new.articles.uniq
         # puts categories[1]
-        categories.each.with_index(1) do |item, index|
+        articles.each.with_index(1) do |item, index|
             if index < 7
                 puts "#{index}. #{item}"
             end
