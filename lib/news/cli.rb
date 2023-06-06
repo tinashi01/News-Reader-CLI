@@ -32,7 +32,7 @@ class NewsReader::CLI
 
 
     def article_list
-        puts 'Here is a list of articles to select from:'.colorize(:cyan)
+        puts 'Here are the top 10 articles to select from:'.colorize(:cyan)
         puts "----------------------------------------------------------------------------------------------------------------------------------------".colorize(:light_blue)
         articles = NewsReader::API.articles.uniq
         articles.each.with_index(1) do |item, index|

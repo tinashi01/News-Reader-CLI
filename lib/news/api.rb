@@ -11,6 +11,7 @@ class NewsReader::API
     end
 
     def self.articles
+        # formatting as json so we can work with data
         articles = JSON.parse(self.get_article)
    
         articles["articles"].collect do |article|
