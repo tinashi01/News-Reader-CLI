@@ -3,6 +3,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'json'
 require 'net/http'
+require 'colorize'
 
 
 require_relative '../lib/news_reader.rb'
