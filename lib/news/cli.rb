@@ -4,6 +4,7 @@ class NewsReader::CLI
         loop do
             choice = menu
             puts choice
+            binding.pry
             if choice = 1
                 article_list
                 read_article
