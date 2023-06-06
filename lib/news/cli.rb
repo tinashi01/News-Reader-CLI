@@ -8,6 +8,8 @@ class NewsReader::CLI
                 article_list
                 read_article    
                 enter
+            elsif choice === "2"
+                random_article
             elsif choice === "0"
                 goodbye
                 break
@@ -24,9 +26,8 @@ class NewsReader::CLI
         puts 'Here is a list of articles to select from:'
         puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
         articles = NewsReader::API.articles.uniq
-        # puts articles[1]
         articles.each.with_index(1) do |item, index|
-            if index < 7
+            if index < 11
                 puts "#{index}. #{item}"
             end
         end
@@ -38,9 +39,7 @@ class NewsReader::CLI
         input = gets.to_i
         article = NewsReader::Article.find_article(input)
 
-        
-
-        if input > 0 && input < 7
+        if input > 0 && input < 11
             puts "Here is your selected article:"
             puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
             
@@ -56,19 +55,31 @@ class NewsReader::CLI
             puts "Continue reading at #{article.url}" 
             puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
         else
-            puts "Sorry, no such article."
+            puts "Sorry, no such article. Please enter a valid number:"
+            read_article
         end
     end
 
+    # want to make my cli app more visually pleasant..
 
-
-    # adding timing on the prompt so user has time to read?
+    def random_article
+        random = NewsReader::Article.random_article
+        puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
+        puts "Random Headline Generator"
+        puts "`#{random.title}`"
+        puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
+        puts "Hit enter to load another headline or type menu to return to menu options:"
+        input = gets.chomp
+        until input.downcase === "menu"
+            random_article
+        end
+    end
 
     def menu
-        # menu options
         puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
         puts "Thank you for using the app. How may I help today?"
-        puts "1. View articles"
+        puts "1. View Articles"
+        puts "2. Random Technology-Headline Generator"
         puts "0. Exit App"
         puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
     end
