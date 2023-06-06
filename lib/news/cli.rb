@@ -2,19 +2,18 @@ class NewsReader::CLI
     def welcome
         puts 'Welcome to the Australian Technology News Reader'
         loop do
-            choice = menu
-            puts choice
-            binding.pry
-            if choice = 1
+            menu
+            choice = gets.chomp
+            if choice === "1"
                 article_list
-                read_article
-                
-            elsif choice = 0
+                read_article    
+                enter
+            elsif choice === "0"
                 goodbye
+                break
             else
-                puts "Please enter a valid option:"
+                puts "No such option, please try again."
             end
-            enter
         end
     end
 
@@ -39,10 +38,10 @@ class NewsReader::CLI
         input = gets.to_i
         article = NewsReader::Article.find_article(input)
 
-        puts "Here is your selected article:"
+        
 
-        if input > 0
-            
+        if input > 0 && input < 7
+            puts "Here is your selected article:"
             puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
             
             puts "`#{article.title}`"
@@ -72,17 +71,16 @@ class NewsReader::CLI
         puts "1. View articles"
         puts "0. Exit App"
         puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
-        inp = gets.to_i
     end
 
     def enter
-        puts "Hit enter to continue...."
+        puts "Hit enter to return to the menu...."
         enter = gets.to_i
     end
 
     def goodbye
         puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
-        puts "Thank you for using our app. Hope you enjoyed!"
+        puts "Thank you for using the News Reader app. Hope you enjoyed!"
         puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
     end
 
