@@ -65,7 +65,7 @@ class NewsReader::CLI
     def random_article
         random = NewsReader::Article.random_article
         puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
-        puts "Random Headline Generator"
+        puts "Headline"
         puts "`#{random.title}`"
         puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
         puts "Hit enter to load another headline or type menu to return to menu options:"
@@ -79,7 +79,7 @@ class NewsReader::CLI
         puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
         puts "Thank you for using the app. How may I help today?"
         puts "1. View Articles"
-        puts "2. Random Technology-Headline Generator"
+        puts "2. Random Headline Generator"
         puts "0. Exit App"
         puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
     end
