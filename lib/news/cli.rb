@@ -1,13 +1,28 @@
 class NewsReader::CLI
     def welcome
-        puts 'Welcome to the News Reader'
-        article_list
-        # valid_input
-        read_article
+        puts 'Welcome to the Australian Technology News Reader'
+        loop do
+            choice = menu
+            puts choice
+            if choice = 1
+                article_list
+                read_article
+                
+            elsif choice = 0
+                goodbye
+            else
+                puts "Please enter a valid option:"
+            end
+            enter
+        end
     end
+
+    # format so we can loop through continuously and the input also loops
+
 
     def article_list
         puts 'Here is a list of articles to select from:'
+        puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
         articles = NewsReader::API.articles.uniq
         # puts articles[1]
         articles.each.with_index(1) do |item, index|
@@ -15,40 +30,59 @@ class NewsReader::CLI
                 puts "#{index}. #{item}"
             end
         end
-        puts "Please type the number of the article that most interests you to read more:"
-
-    end
-
-    def valid_input
-        num = gets.to_i
-        
+        puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
+        puts "Please type the number of the article that most interests you:"
     end
 
     def read_article
-        article = NewsReader::Article.all
-        # article.each.with_index(1) do |item, index|
-        #     if index < 3
-        #         puts "#{index}. #{article}"
-        #     end
-        # # end
-        # binding.pry
+        input = gets.to_i
+        article = NewsReader::Article.find_article(input)
+
+        puts "Here is your selected article:"
+
+        if input > 0
+            
+            puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
+            
+            puts "`#{article.title}`"
+
+            if article.author === "null"
+                puts "Written by #{article.author}"
+            else
+                puts "No author information"  
+            end
+
+            puts "#{article.description}"
+            puts "Continue reading at #{article.url}" 
+            puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
+        else
+            puts "Sorry, no such article."
+        end
     end
 
-    # menu options could instead sort by category?
-    # 
-    
 
-    # def menu    
-    #     puts '--Menu--'
-    #     puts 'Choose your news source:'
-    #     puts '1. BBC News'
-    #     puts '2. CNN'
-    #     puts '3. Fox News'
-    #     puts '4. Exit'
-    # end
 
-    # def bbc_news
-    #     puts "Here are the top 10 articles from BBC News..."
+    # adding timing on the prompt so user has time to read?
 
-    # end
+    def menu
+        # menu options
+        puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
+        puts "Thank you for using the app. How may I help today?"
+        puts "1. View articles"
+        puts "0. Exit App"
+        puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
+        inp = gets.to_i
+    end
+
+    def enter
+        puts "Hit enter to continue...."
+        enter = gets.to_i
+    end
+
+    def goodbye
+        puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
+        puts "Thank you for using our app. Hope you enjoyed!"
+        puts "----------------------------------------------------------------------------------------------------------------------------------------------------------"
+    end
+
 end
