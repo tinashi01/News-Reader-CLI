@@ -2,5 +2,7 @@
 
 require_relative '../config/environment.rb'
 
+
+# accesses class, creates new instance and calls the welcome method
 NewsReader::CLI.new.welcome
 
