@@ -12,6 +12,7 @@ class NewsReader::CLI
         
         loop do
             menu
+            puts "Please choose your option:".colorize(:cyan)
             choice = gets.chomp
             if choice === "1"
                 article_list
@@ -26,6 +27,7 @@ class NewsReader::CLI
                 puts "No such option, please try again.".colorize(:red)
             end
         end
+        
     end
 
 
