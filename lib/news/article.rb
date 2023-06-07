@@ -14,7 +14,7 @@ class NewsReader::Article
     end
 
     def self.all
-        NewsReader::API.article_info if @@all.empty?
+        NewsReader::API.article_info
         @@all
     end
 

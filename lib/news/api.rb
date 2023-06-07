@@ -15,7 +15,7 @@ class NewsReader::API
         articles = JSON.parse(self.get_article)
    
         articles["articles"].collect do |article|
-            name = article["title"]
+            article["title"]
         end
     end
 

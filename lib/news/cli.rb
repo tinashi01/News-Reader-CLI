@@ -28,7 +28,6 @@ class NewsReader::CLI
         end
     end
 
-    # format so we can loop through continuously and the input also loops
 
 
     def article_list

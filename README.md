@@ -1,7 +1,7 @@
 # phase-3-project
-Phase 3 Project - CLI Application
+Phase 3 Project - News Reader CLI Application
 
-This is a CLI application to browse Inshorts News. View articles and sorted by a complete list of categories.
+This is a News Reader CLI application to browse article titles and view them. 
 
 ## Installation
 
