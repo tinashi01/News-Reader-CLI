@@ -33,7 +33,7 @@ class NewsReader::CLI
 
 
     def article_list
-        puts 'Here are the top 10 articles to select from:'.colorize(:cyan)
+        puts 'Top 10 Tech News'.colorize(:cyan)
         puts "----------------------------------------------------------------------------------------------------------------------------------------".colorize(:light_blue)
         articles = NewsReader::API.articles.uniq
         articles.each.with_index(1) do |item, index|
@@ -55,7 +55,7 @@ class NewsReader::CLI
             
             puts "#{article.title}".colorize(:magenta)
 
-            if article.author === "null"
+            if article.author != "null"
                 puts "Written by #{article.author}".colorize(:light_blue)
             else
                 puts "No author information".colorize(:red)
@@ -74,11 +74,12 @@ class NewsReader::CLI
 
     def random_article
         random = NewsReader::Article.random_article
+        puts "Random Headline".colorize(:cyan)
         puts "----------------------------------------------------------------------------------------------------------------------------------------------------------".colorize(:light_blue)
-        puts "Headline".colorize(:cyan)
         puts "#{random.title}".colorize(:magenta)
+        puts "For more info: #{random.url}".colorize(:light_blue)
         puts "----------------------------------------------------------------------------------------------------------------------------------------------------------".colorize(:light_blue)
-        puts "Hit enter to load another headline or type menu to return to menu options:".colorize(:cyan)
+        puts "Hit enter for another random article or type menu to return to menu options:".colorize(:cyan)
         input = gets.chomp
         if input.downcase != "menu"
             random_article

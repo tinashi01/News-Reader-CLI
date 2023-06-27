@@ -1,9 +1,14 @@
-# phase-3-project
-Phase 3 Project - News Reader CLI Application
+## Introduction
+Technology News Reader CLI Application
 
-This is a News Reader CLI application to browse article titles and view them. 
+This is a Technology News Reader CLI application to browse articles and view them. 
 
 ## Installation
+First execute to download dependencies:
+    
+    $ bundle install
+
+Then to run app:
 
     $ ruby bin/news_reader
 

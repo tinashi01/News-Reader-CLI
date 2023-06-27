@@ -4,15 +4,19 @@
 class NewsReader::API
     URL = "https://saurav.tech/NewsAPI/top-headlines/category/technology/au.json"
 
+
+
     def self.get_article
         uri = URI.parse(URL)
         response = Net::HTTP.get_response(uri)
         response.body
+        # directly change to json here to avoid repeats
     end
 
     def self.articles
         # formatting as json so we can work with data
         articles = JSON.parse(self.get_article)
+
    
         articles["articles"].collect do |article|
             article["title"]
